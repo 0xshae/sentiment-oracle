@@ -1,0 +1,8 @@
+#json payloads
+*.json
+
+#env variables
+\oracle-publisher\oracle_keypair.json
+
+#context files
+project-context.md
