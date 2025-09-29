@@ -2,7 +2,29 @@
 *.json
 
 #env variables
-\oracle-publisher\oracle_keypair.json
+/oracle-publisher/oracle_keypair.json
 
 #context files
 project-context.md
+
+/oracle-publisher/cli/target
+
+/oracle-publisher/program/target
+
+/oracle-node/target
+
+api/Cargo.lock
+
+oracle-node/Cargo.lock
+
+oracle-publisher/cli/Cargo.lock
+
+oracle-publisher/program/Cargo.lock
+
+api/Cargo.lock
+
+oracle-node/Cargo.lock
+
+oracle-publisher/cli/Cargo.lock
+
+oracle-publisher/program/Cargo.lock

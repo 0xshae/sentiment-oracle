@@ -1,8 +1,8 @@
 [package]
-name = "sentiment-oracle-program"
+name = "price-oracle-program"
 version = "0.1.0"
 edition = "2021"
-authors = ["Sentiment Oracle Team"]
+authors = ["Price Oracle Team"]
 
 [features]
 no-entrypoint = []

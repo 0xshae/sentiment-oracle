@@ -5,10 +5,10 @@ This project is a full-stack sentiment oracle system that analyzes tweets relate
 ## Module 1: Twitter Scraper
 
 This module scrapes real tweets about `$SOL` and `Nifty 50` from various sources and saves them as structured JSON files for sentiment analysis.
-
+r
 ### Setup
 
-Install the required dependencies:
+Install the required dependencies:r
 
 ```
 pip install -r requirements.txt
@@ -147,4 +147,101 @@ cargo build --release
 
 The Solana blockchain now contains immutable records of signed sentiment data, which can be verified by anyone with access to the blockchain.
 
-For more details, see the [Oracle Publisher README](oracle-publisher/README.md). 
+For more details, see the [Oracle Publisher README](oracle-publisher/README.md).
+
+## Module 4: REST API
+
+This module provides a RESTful API to access sentiment data and verify signatures using Rust and Actix Web.
+
+### Setup
+
+Build and run the API server:
+
+```bash
+cd api
+cargo build
+cargo run
+```
+
+### Endpoints
+
+- **GET /latest?asset=$SOL** - Returns the latest sentiment data for a given asset
+- **GET /history?asset=$SOL** - Returns historical sentiment data for charting
+- **POST /verify** - Verifies a signature against payload data
+- **GET /dashboard** - Serves a simple HTML dashboard
+
+### Features
+
+- In-memory caching of recent sentiment data
+- Signature verification using ED25519
+- CORS support for frontend integration
+- Structured error handling and logging
+
+For more details, see the [API README](api/README.md).
+
+## Module 5: Frontend Dashboard
+
+This module provides a visual interface to display sentiment data and verify signatures.
+
+### Features
+
+- Current sentiment status display
+- Sentiment timeline visualization using Chart.js
+- Interactive signature verification tool
+- Mobile responsive design with Tailwind CSS
+
+### Usage
+
+The frontend can be accessed in two ways:
+
+1. Via the API's built-in dashboard endpoint:
+   ```
+   http://localhost:8080/dashboard
+   ```
+
+2. By serving the static files directly:
+   ```bash
+   cd api/frontend
+   python -m http.server 8000
+   # Then visit http://localhost:8000
+   ```
+
+## Running the Complete Pipeline
+
+To run the entire pipeline from tweet collection to visualization, you can use the demo script:
+
+```
+powershell -File demo.ps1
+```
+
+This will:
+1. Show the tweet data from the assets directory
+2. Run the sentiment analyzer
+3. Run the oracle publisher to sign the data
+4. Demonstrate tampering detection
+5. Provide instructions for running the API and frontend
+
+## Project Structure
+
+```
+sentiment-oracle/
+├── api/                   # Module 4: REST API
+│   ├── src/               # Rust source code
+│   └── frontend/          # Module 5: Frontend
+├── assets/                # Data files
+│   ├── SOL_*.json         # Tweet data
+│   └── *_sentiment_*.json # Sentiment analysis results
+├── oracle-publisher/      # Module 3: Oracle Publisher
+│   ├── demo.py            # Demo of signing and verification
+│   └── verify_tampering.py # Tampering detection demo
+├── sentiment_analyzer.py  # Module 2: Sentiment Analysis
+├── twitter_scraper.py     # Module 1: Twitter Scraper
+└── README-PIPELINE.md     # Detailed pipeline documentation
+```
+
+## Security Features
+
+- Cryptographic signatures with ED25519
+- Data hashing with SHA-256
+- Tamper detection through signature verification
+- Non-repudiation through public key verification 

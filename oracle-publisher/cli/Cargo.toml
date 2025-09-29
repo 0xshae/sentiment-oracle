@@ -1,8 +1,8 @@
 [package]
-name = "sentiment-oracle-cli"
+name = "price-oracle-cli"
 version = "0.1.0"
 edition = "2021"
-authors = ["Sentiment Oracle Team"]
+authors = ["Price Oracle Team"]
 
 [dependencies]
 solana-sdk = "1.16.0"
@@ -16,4 +16,4 @@ sha2 = "0.10.6"
 ed25519-dalek = "1.0.1"
 rand = "0.7.3"
 hex = "0.4.3"
-sentiment-oracle-program = { path = "../program", features = ["no-entrypoint"] } 
+price-oracle-program = { path = "../program", features = ["no-entrypoint"] } 

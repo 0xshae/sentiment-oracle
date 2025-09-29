@@ -1,4 +1,4 @@
-// Sentiment Oracle CLI - A tool to sign and submit sentiment data to Solana
+// Price Oracle CLI - A tool to sign and submit price data to Solana
 use clap::{Parser, Subcommand};
 use solana_client::rpc_client::RpcClient;
 use solana_sdk::{
@@ -15,24 +15,23 @@ use std::io::Read;
 use std::str::FromStr;
 use serde::{Serialize, Deserialize};
 use sha2::{Sha256, Digest};
-use ed25519_dalek::{Keypair as DalekKeypair, PublicKey, SecretKey, Signature};
+use ed25519_dalek::{Keypair as DalekKeypair, Signer as DalekSigner};
 use rand::rngs::OsRng;
 use borsh::BorshSerialize;
-use sentiment_oracle_program::{
-    SentimentInstruction,
+use price_oracle_program::{
+    PriceOracleInstruction,
     get_account_size,
 };
 
-// Define the sentiment payload structure to match what we expect from the JSON file
+// Define the price payload structure
 #[derive(Serialize, Deserialize, Debug, Clone)]
-struct SentimentData {
-    id: String,
-    text: String,
-    label: String,
-    score: f64,
-    date: String,
-    username: String,
-    source: String,
+struct PriceData {
+    asset: String,
+    price: f64,
+    confidence: f64,
+    timestamp: i64,
+    sources: Vec<String>,
+    consensus_score: f64,
 }
 
 // Define the structure for signed data
@@ -128,7 +127,7 @@ fn main() {
     let keypair = match cli.keypair {
         Some(keypair_path) => read_keypair_file(&keypair_path).expect("Failed to read keypair"),
         None => {
-            let config = Config::load().expect("Failed to load Solana CLI config");
+            let config = Config::load(&Config::default_config_file_path()).expect("Failed to load Solana CLI config");
             read_keypair_file(&config.keypair_path).expect("Failed to read keypair from config")
         }
     };
