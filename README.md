@@ -1,6 +1,6 @@
 # Solana Price Oracle Node
 
-A production-ready, enterprise-grade decentralized price aggregation oracle for the Solana ecosystem. This project demonstrates advanced blockchain infrastructure development with sophisticated consensus mechanisms, cryptographic security, and real-time data processing.
+A decentralized price aggregation oracle for the Solana ecosystem. This project demonstrates advanced blockchain infrastructure development with sophisticated consensus mechanisms, cryptographic security, and real-time data processing.
 
 ## Overview
 
@@ -209,4 +209,5 @@ cargo clippy
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
