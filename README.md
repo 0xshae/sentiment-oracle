@@ -1,10 +1,6 @@
 # Solana Price Oracle Node
 
-A decentralized price aggregation oracle for the Solana ecosystem. This project demonstrates advanced blockchain infrastructure development with sophisticated consensus mechanisms, cryptographic security, and real-time data processing.
-
-## Overview
-
-This oracle node aggregates price data from multiple independent sources, applies advanced consensus algorithms, and publishes verified price feeds to the Solana blockchain. Built with Rust for maximum performance and security, it showcases enterprise-level distributed systems architecture.
+A decentralized price aggregation oracle for the Solana ecosystem. This oracle node aggregates price data from multiple independent sources, applies advanced consensus algorithms, and publishes verified price feeds to the Solana blockchain. Built with Rust for maximum performance and security, it showcases enterprise-level distributed systems architecture.
 
 ## Architecture
 
@@ -209,5 +205,6 @@ cargo clippy
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 
